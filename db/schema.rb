@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_01_30_181647) do
   create_table "friendships", force: :cascade do |t|
     t.integer "friender_id"
     t.integer "friendee_id"
-    t.boolean "request", default: false
+    t.boolean "accepted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2019_01_30_181647) do
   create_table "user_groups", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
-    t.boolean "request", default: false
+    t.boolean "accepted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

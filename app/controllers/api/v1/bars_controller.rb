@@ -1,5 +1,10 @@
 class Api::V1::BarsController < ApplicationController
 
+  API_HOST ="https://api.yelp.com"
+  SEARCH_PATH="/v3/businesses/search"
+  API_KEY=ENV["API_KEY"]
+
+
   def index
     @bars = Bar.all
     render json: @bars
@@ -35,6 +40,19 @@ end
       render json:@bars
     end
   end
+
+
+  def search
+      url = "#{API_HOST}#{SEARCH_PATH}"
+      searchTerms = {
+      categories: "bars, All",
+      term: "bars",
+      location: params[:location]}
+      yelp = HTTP.auth("Bearer #{API_KEY}").get(url, params: searchTerms)
+      parsed_data_yelp = JSON.parse(yelp)
+      render json:parsed_data_yelp
+  end
+
 
   private
   def bar_params

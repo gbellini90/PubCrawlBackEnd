@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :user_groups
       resources :friendships
       resources :users
+      post '/search', to: 'bars#search'
     end
-  end 
+  end
 end
