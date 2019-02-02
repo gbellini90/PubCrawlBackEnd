@@ -1,3 +1,3 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :age, :username, :bio, :pic, :friender_friendships, :friendee_friendships, :user_groups
+  attributes :id, :name, :age, :username, :bio, :pic, :friendered_relationships, :friendeed_relationships, :user_groups
 end
