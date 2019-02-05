@@ -34,13 +34,6 @@ end
     end
   end
 
-  def destroy
-    @bar = Bar.find(params[:id])
-    if @bar.destroy
-      render json:@bars
-    end
-  end
-
 
   def search
       url = "#{API_HOST}#{SEARCH_PATH}"
