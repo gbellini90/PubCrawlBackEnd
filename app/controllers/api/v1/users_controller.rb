@@ -35,7 +35,13 @@ end
     if @user.destroy
       render json:@users
     end
-  end 
+  end
+
+  def usersWithoutBuds
+    @user = User.find(params[:user_id])
+    @usersWithoutBuds = @user.usersWithoutBuds
+    render json: @usersWithoutBuds, status: :ok
+  end
 
 
   private

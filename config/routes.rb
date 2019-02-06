@@ -7,8 +7,13 @@ Rails.application.routes.draw do
       resources :groups
       resources :user_groups
       resources :friendships
-      resources :users
+      resources :users do
+        get '/buds', to: 'users#buds'
+        get 'budless', to: 'users#usersWithoutBuds'
+      end
+
       post '/search', to: 'bars#search'
+
     end
   end
 end
