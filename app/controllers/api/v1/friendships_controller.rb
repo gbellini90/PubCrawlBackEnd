@@ -36,6 +36,7 @@ end
     end
   end
 
+
   private
   def friendship_params
     params.require(:friendship).permit(:friendee_id, :friender_id, :accepted)

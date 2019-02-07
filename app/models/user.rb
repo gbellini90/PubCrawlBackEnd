@@ -36,6 +36,14 @@ def pendingFriends
   (self.requestedfriendeedBuds + self.requestedfrienderedBuds) - [self]
 end
 
+def pendingFrienders
+  self.requestedfrienderedBuds
+end
+
+def pendingFriendees
+  self.requestedfriendeedBuds
+end
+
 
 def usersWithoutBuds
   (User.all - self.frienderedBuds-self.friendeedBuds)-[self]

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
         get 'budless', to: 'users#usersWithoutBuds'
         get 'friends', to: 'users#friends'
         get 'pending', to: 'users#pendingFriends'
+        get 'pendingFriendees', to: 'users#pendingFriendees'
+        get 'pendingFrienders', to: 'users#pendingFrienders'
       end
 
       post '/search', to: 'bars#search'
