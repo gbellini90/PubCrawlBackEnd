@@ -43,6 +43,30 @@ end
     render json: @usersWithoutBuds, status: :ok
   end
 
+  def friends
+    @user=User.find(params[:user_id])
+    @friends = @user.friends
+    render json: @friends, status: :ok
+  end
+
+  def pendingFriends
+    @user=User.find(params[:user_id])
+    @pendingFriends = @user.pendingFriends
+    render json: @pendingFriends, status: :ok
+  end
+
+  # def requestedfriendeedBuds
+  #   @user=User.find(params[:user_id])
+  #   @requestedfriendeedBuds = @user.requestedfriendeedBuds
+  #   render json:@requestedfriendeedBuds, status: :ok
+  # end
+  #
+  # def requestedfrienderedBuds
+  #   @user=User.find(params[:user_id])
+  #   @requestedfrienderedBuds = @user.requestedfrienderedBuds
+  #   render json:@requestedfrienderedBuds, status: ok
+  # end
+
 
   private
   def user_params

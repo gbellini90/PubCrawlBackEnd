@@ -16,11 +16,32 @@ def friendeedBuds
   }.compact
 end
 
+def requestedfrienderedBuds
+  self.friendered_relationships.collect{|friendship|
+    !friendship.accepted ? friendship.friendee : nil
+  }.compact
+end
+
+def requestedfriendeedBuds
+  self.friendeed_relationships.collect{|friendship|
+    !friendship.accepted ? friendship.friender : nil
+  }.compact
+end
+
+def friends
+  (self.friendeedBuds + self.frienderedBuds)-[self]
+end
+
+def pendingFriends
+  (self.requestedfriendeedBuds + self.requestedfrienderedBuds) - [self]
+end
 
 
 def usersWithoutBuds
   (User.all - self.frienderedBuds-self.friendeedBuds)-[self]
 end
+
+
 
 
 end

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       resources :users do
         get '/buds', to: 'users#buds'
         get 'budless', to: 'users#usersWithoutBuds'
+        get 'friends', to: 'users#friends'
+        get 'pending', to: 'users#pendingFriends'
       end
 
       post '/search', to: 'bars#search'
