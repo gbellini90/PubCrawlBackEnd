@@ -46,7 +46,7 @@ end
 
 
 def usersWithoutBuds
-  (User.all - self.frienderedBuds-self.friendeedBuds)-[self]
+  (User.all - self.frienderedBuds -  self.friendeedBuds - self.requestedfriendeedBuds - self.requestedfrienderedBuds) - [self]
 end
 
 
