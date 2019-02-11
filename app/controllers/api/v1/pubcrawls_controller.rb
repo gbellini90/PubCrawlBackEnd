@@ -1,4 +1,5 @@
 class Api::V1::PubcrawlsController < ApplicationController
+
   def index
     @pubcrawls = Pubcrawl.all
     render json: @pubcrawls
@@ -37,7 +38,7 @@ end
 
   private
   def pubcrawl_params
-    params.require(:pubcrawl).permit(:name)
+    params.require(:pubcrawl).permit(:group_id)
   end
 
 end

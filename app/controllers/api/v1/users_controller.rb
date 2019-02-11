@@ -67,6 +67,14 @@ end
     render json: @pendingFriendees, status: :ok
   end
 
+  def myGroups
+    @user=User.find(params[:user_id])
+    @myGroups = @user.myGroups
+    render json: @myGroups, status: :ok
+  end
+
+
+
   private
   def user_params
     params.require(:user).permit(:name, :age, :username, :bio, :pic)

@@ -17,6 +17,7 @@ class Api::V1::BarsController < ApplicationController
 
 #POST api/v1/bars
   def create
+    # @bar = Bar.create(bar_params)
     @bar = Bar.create(bar_params)
     if @bar.valid?
       render json: @bar, status: :ok
@@ -40,8 +41,8 @@ end
       searchTerms = {
       categories: "bars, beergardens, karaoke, pianobars, barcrawl",
       term: "bars",
-      limit:50,
-      radius:3500,
+      limit:30,
+      radius:2000,
       location: params[:location]}
       yelp = HTTP.auth("Bearer #{API_KEY}").get(url, params: searchTerms)
       parsed_data_yelp = JSON.parse(yelp)
@@ -51,7 +52,7 @@ end
 
   private
   def bar_params
-    params.require(:bar).permit(:name, :address, :description, :rating)
+    params.require(:bar).permit(:name, :pic, :address, :rating, :price, :latitude, :longitude)
   end
 
 end
