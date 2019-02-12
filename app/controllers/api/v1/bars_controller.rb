@@ -18,7 +18,7 @@ class Api::V1::BarsController < ApplicationController
 #POST api/v1/bars
   def create
     # @bar = Bar.create(bar_params)
-    @bar = Bar.create(bar_params)
+    @bar = Bar.find_or_create_by(bar_params)
     if @bar.valid?
       render json: @bar, status: :ok
     else
