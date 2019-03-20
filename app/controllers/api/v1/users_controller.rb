@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: [:create, :index, :friends, :pendingFriends, :pendingFriendees, :pendingFrienders, :myGroups, :usersWithoutBuds]
+  skip_before_action :authorized, only: [:create, :index, :friends, :profile, :pendingFriends, :pendingFriendees, :pendingFrienders, :myGroups, :usersWithoutBuds]
 
   def index
     @users = User.all
@@ -13,9 +13,9 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if @user.valid? # validations
+    if @user.valid?
       @token = encode_token(user_id: @user.id)
-      render json: { user: User.new(@user), jwt: @token }, status: :created
+      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
     else
       render json: { error: 'failed to create user' }, status: :not_acceptable
     end
@@ -38,8 +38,8 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def profile
-    render json: { user: User.new(current_user) }, status: :accepted
-  end
+     render json: { user: UserSerializer.new(current_user) }, status: :accepted
+   end
 
   def usersWithoutBuds
     @user = User.find(params[:user_id])
