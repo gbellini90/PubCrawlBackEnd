@@ -17,15 +17,14 @@ User.destroy_all
 # User_group.destroy_all
 # Pubcrawl_bar.destroy_all
 
-30.times do
+35.times do
   User.create!(
     name:"#{Faker::Name.unique.name}",
     username:"#{Faker::Internet.unique.username}",
-    age:rand(21..60),
+    age:rand(21..50),
     bio:"#{Faker::TvShows::MichaelScott.quote}",
-    pic:"#{UiFaces.face}")
+    pic:"#{UiFaces.face}",
+    password:"password")
 end
 
-# Friendship.create!(friendee_id:1, friender_id:2)
-# Friendship.create!(friendee_id:3, friender_id:12)
-# Friendship.create!(friendee_id:4, friender_id:5)
+User.create!(name:"Gabby", username:"gbellini", age:28, bio:"Hey, I'm Gabby", pic:"http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4133.png", password:"hi")

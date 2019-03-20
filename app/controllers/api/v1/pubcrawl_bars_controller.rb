@@ -1,4 +1,5 @@
 class Api::V1::PubcrawlBarsController < ApplicationController
+  skip_before_action :authorized, only: [:create, :index, :show, :destroy]
 
   def index
     @pubcrawl_bars = PubcrawlBar.all

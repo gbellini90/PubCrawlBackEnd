@@ -1,4 +1,5 @@
 class Api::V1::GroupsController < ApplicationController
+  skip_before_action :authorized, only: [:create, :index, :show, :destroy]
 
   def index
     @groups = Group.all
@@ -37,6 +38,7 @@ end
   end
 
   private
+
   def group_params
     params.require(:group).permit(:name, :creator_id)
   end

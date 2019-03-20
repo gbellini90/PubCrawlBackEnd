@@ -1,4 +1,5 @@
 class Api::V1::FriendshipsController < ApplicationController
+  skip_before_action :authorized, only: [:create, :index, :show]
 
   def index
     @friendships = Friendship.all

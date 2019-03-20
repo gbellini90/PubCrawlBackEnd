@@ -1,4 +1,5 @@
 class Api::V1::UsersController < ApplicationController
+  skip_before_action :authorized, only: [:create, :index, :friends, :pendingFriends, :pendingFriendees, :pendingFrienders, :myGroups, :usersWithoutBuds]
 
   def index
     @users = User.all
@@ -10,15 +11,15 @@ class Api::V1::UsersController < ApplicationController
     render json: @user, status: :ok
   end
 
-#POST api/v1/users
   def create
     @user = User.create(user_params)
-    if @user.valid?
-      render json: @user, status: :ok
+    if @user.valid? # validations
+      @token = encode_token(user_id: @user.id)
+      render json: { user: User.new(@user), jwt: @token }, status: :created
     else
-      render json: @user.errors.full_messages, status: :unprocessable_entity
+      render json: { error: 'failed to create user' }, status: :not_acceptable
+    end
   end
-end
 
   def update
     @user = User.find(params[:id])
@@ -29,12 +30,15 @@ end
     end
   end
 
-
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
       render json:@users
     end
+  end
+
+  def profile
+    render json: { user: User.new(current_user) }, status: :accepted
   end
 
   def usersWithoutBuds
@@ -77,7 +81,7 @@ end
 
   private
   def user_params
-    params.require(:user).permit(:name, :age, :username, :bio, :pic)
+    params.require(:user).permit(:name, :age, :username, :bio, :pic, :password)
   end
 
 end

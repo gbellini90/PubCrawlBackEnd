@@ -1,4 +1,5 @@
 class Api::V1::BarsController < ApplicationController
+    skip_before_action :authorized, only: [:index, :search, :create, :show]
 
   API_HOST ="https://api.yelp.com"
   SEARCH_PATH="/v3/businesses/search"
@@ -42,7 +43,7 @@ end
       categories: "bars, beergardens, karaoke, pianobars, barcrawl",
       term: "bars",
       limit:30,
-      radius:2000,
+      radius:1500,
       location: params[:location]}
       yelp = HTTP.auth("Bearer #{API_KEY}").get(url, params: searchTerms)
       parsed_data_yelp = JSON.parse(yelp)

@@ -14,10 +14,11 @@ Rails.application.routes.draw do
         get 'pending', to: 'users#pendingFriends'
         get 'pendingFriendees', to: 'users#pendingFriendees'
         get 'pendingFrienders', to: 'users#pendingFrienders'
-        get 'mygroups', to: 'users#myGroups'
       end
 
       post '/search', to: 'bars#search'
+      post '/login', to: 'auth#create'
+      get '/profile', to: 'users#profile'
 
     end
   end
