@@ -1,5 +1,5 @@
 class Api::V1::GroupsController < ApplicationController
-  skip_before_action :authorized, only: [:create, :index, :show, :destroy]
+skip_before_action :authorized, only: [:index]
 
   def index
     @groups = Group.all

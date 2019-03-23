@@ -1,5 +1,4 @@
 class Api::V1::BarsController < ApplicationController
-    skip_before_action :authorized, only: [:index, :search, :create, :show]
 
   API_HOST ="https://api.yelp.com"
   SEARCH_PATH="/v3/businesses/search"
