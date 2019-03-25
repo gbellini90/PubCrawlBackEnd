@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: [:index, :friends, :profile, :usersWithoutBuds]
+  skip_before_action :authorized, only: [:index, :create, :show, :friends, :profile, :usersWithoutBuds]
 
   def index
     @users = User.all
