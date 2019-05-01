@@ -51,7 +51,7 @@ and once the terminal says it’s running, navigate to http://localhost:3000. If
 
 ## Demo Video
 
-[PubCrawlin'](https://youtu.be/8YwsaviZZe0)
+[PubCrawlin'](https://youtu.be/rxKEzIz-uek)
 
 ## Author
 
