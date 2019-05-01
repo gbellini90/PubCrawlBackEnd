@@ -12,7 +12,7 @@ React, Redux, Thunk, Ruby on Rails (Rails API backend), Yelp API, Leaflet, HTML,
 ## Getting Started
 
 ### Prerequisites
-To use, clone down this repo and open with your preferred text editor. This project uses Ruby on Rails, so you’ll need to make sure you have both installed (if you don’t, visit this link for instructions: Digital Ocean: Install Ruby and Set Up Local Environment) as well as PostgreSQL as the database resource.
+To use, clone down this repo and open with your preferred text editor. This project uses Ruby on Rails, so you’ll need to make sure you have both installed as well as PostgreSQL as the database resource.
 
 Because the backend pulls data from the Yelp API, you will also need to obtain an API key. Head to https://www.yelp.com/developers/documentation/v3 to login or signup with account credentials and from there you’ll be able to request an API Key. 
 
